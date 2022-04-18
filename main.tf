@@ -1,12 +1,12 @@
 module "policy" {
-    source = "./modules/roles"
+  source = "./modules/roles"
 }
 
 module "users" {
-    source = "./modules/user"
+  source = "./modules/user"
 
-    for_each = toset(var.users)
+  for_each = toset(var.users)
 
-    name = each.key
-    policy_arn = module.policy.policy_arn
+  name       = each.key
+  policy_arn = module.policy.policy_arn
 }
