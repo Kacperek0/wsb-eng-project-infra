@@ -1,0 +1,30 @@
+name: Test & Prepare
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  tflint:
+    name: Terraform Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.8
+          terraform_wrapper: false
+
+      - name: Terraform init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+        run: terraform init
+
+      - name: Terraform Format
+        run: terraform fmt -check=true
+
+  plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
