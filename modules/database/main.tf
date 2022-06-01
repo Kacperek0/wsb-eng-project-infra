@@ -15,10 +15,11 @@ resource "aws_rds_cluster" "postgresql" {
 }
 
 resource "aws_rds_cluster_instance" "instance" {
-  cluster_identifier = aws_rds_cluster.postgresql.id
-  instance_class     = "db.serverless"
-  engine             = aws_rds_cluster.postgresql.engine
-  engine_version     = aws_rds_cluster.postgresql.engine_version
+  cluster_identifier  = aws_rds_cluster.postgresql.id
+  instance_class      = "db.serverless"
+  engine              = aws_rds_cluster.postgresql.engine
+  engine_version      = aws_rds_cluster.postgresql.engine_version
+  publicly_accessible = true
 }
 
 resource "random_password" "master" {
