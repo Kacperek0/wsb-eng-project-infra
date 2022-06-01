@@ -6,7 +6,7 @@ resource "aws_rds_cluster" "postgresql" {
   engine_mode        = "provisioned"
   database_name      = var.db_name
   master_username    = "postgres"
-  master_password    = var.db_password
+  master_password    = aws_secretsmanager_secret_version.pwd.secret_string
 
   serverlessv2_scaling_configuration {
     min_capacity = 0.5
