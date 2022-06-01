@@ -50,5 +50,4 @@ module "database" {
 
   cluster_identifier = "wsb-psql-aurora-slsv2"
   db_name            = "wsb_engineering"
-  db_password        = data.aws_secretsmanager_secret_version.pwd
 }
