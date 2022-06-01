@@ -12,6 +12,8 @@ resource "aws_rds_cluster" "postgresql" {
     min_capacity = 0.5
     max_capacity = 2
   }
+
+    tags = var.tags
 }
 
 resource "aws_rds_cluster_instance" "instance" {
@@ -20,6 +22,8 @@ resource "aws_rds_cluster_instance" "instance" {
   engine              = aws_rds_cluster.postgresql.engine
   engine_version      = aws_rds_cluster.postgresql.engine_version
   publicly_accessible = true
+
+    tags = var.tags
 }
 
 resource "random_password" "master" {
