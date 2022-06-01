@@ -42,4 +42,6 @@ module "database" {
 
   cluster_identifier = "wsb-psql-aurora-slsv2"
   db_name            = "wsb_engineering"
+
+  tags = var.tags
 }
