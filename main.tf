@@ -37,14 +37,6 @@ module "lambda" {
   tags = var.tags
 }
 
-data "aws_secretsmanager_secret" "password" {
-  name = "postgresql-password"
-}
-
-data "aws_secretsmanager_secret_version" "pwd" {
-  secret_id = aws_secretsmanager_secret.password.id
-}
-
 module "database" {
   source = "./modules/database"
 

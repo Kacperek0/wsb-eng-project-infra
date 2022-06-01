@@ -36,4 +36,3 @@ resource "aws_secretsmanager_secret_version" "pwd" {
   secret_id     = aws_secretsmanager_secret.password.id
   secret_string = random_password.master.result
 }
-
