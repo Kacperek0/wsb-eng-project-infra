@@ -37,9 +37,18 @@ module "lambda" {
   tags = var.tags
 }
 
+data "aws_secretsmanager_secret" "password" {
+  name = "postgresql-password"
+}
+
+data "aws_secretsmanager_secret_version" "pwd" {
+  secret_id = aws_secretsmanager_secret.password.id
+}
+
 module "database" {
   source = "./modules/database"
 
   cluster_identifier = "wsb-psql-aurora-slsv2"
   db_name            = "wsb_engineering"
+  db_password        = data.aws_secretsmanager_secret_version.pwd
 }
