@@ -36,3 +36,10 @@ module "lambda" {
 
   tags = var.tags
 }
+
+module "database" {
+  source = "./modules/database"
+
+  cluster_identifier = "wsb-psql-aurora-slsv2"
+  db_name            = "wsb_engineering"
+}
