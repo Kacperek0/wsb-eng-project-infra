@@ -5,6 +5,7 @@ resource "aws_rds_cluster" "postgresql" {
   engine_version     = "13.6"
   engine_mode        = "provisioned"
   database_name      = var.db_name
+  master_username    = "postgres"
 
   serverlessv2_scaling_configuration {
     min_capacity = 0.5
