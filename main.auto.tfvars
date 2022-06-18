@@ -4,6 +4,6 @@ tags = {
   project = "wsb"
 }
 
-buckets = ["wsb-eng-project-test-bucket"]
+buckets = ["wsb-eng-project-test-bucket", "wsb-eng-transactions-bucket"]
 
 lambda_name = "wsb-test-lambda"
