@@ -45,3 +45,13 @@ module "database" {
 
   tags = var.tags
 }
+
+module "ecs" {
+  source = "./modules/ecs"
+
+  cluster_name    = "wsb-ecs-cluster"
+  log_group_name  = "wsb-ecs-log-group"
+  task_definition = "wsb-ecs-task-definition"
+
+  tags = var.tags
+}
