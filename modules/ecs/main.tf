@@ -6,17 +6,13 @@ resource "aws_cloudwatch_log_group" "log_group" {
 resource "aws_ecs_cluster" "cluster" {
   name = var.cluster_name
 
-    configuration {
-        name = "containerInsights"
-        value = "enabled"
+  configuration {
+    name  = "containerInsights"
+    value = "enabled"
 
-        log_configuration {
-            log_driver = "awslogs"
-            options = {
-                "awslogs-group" = aws_cloudwatch_log_group.log_group.name
-                "awslogs-region" = "eu-west-1'
-                "awslogs-stream-prefix" = "ecs"
-            }
-        }
+    log_configuration {
+      log_driver           = "awslogs"
+      cloudwatch_log_group = aws_cloudwatch_log_group.log_group.name
     }
+  }
 }
