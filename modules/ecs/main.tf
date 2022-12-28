@@ -8,10 +8,12 @@ resource "aws_cloudwatch_log_group" "log_group" {
 resource "aws_ecs_cluster" "cluster" {
   name = var.cluster_name
 
-  configuration {
+  setting {
     name  = "containerInsights"
     value = "enabled"
+  }
 
+  configuration {
     log_configuration {
       log_driver           = "awslogs"
       cloudwatch_log_group = aws_cloudwatch_log_group.log_group.name
