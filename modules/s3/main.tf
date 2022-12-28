@@ -4,8 +4,7 @@ resource "aws_s3_bucket" "bucket" {
 
   tags = var.tags
 
-  aws_s3_bucket_versioning "versioning" {
-    bucket  = aws_s3_bucket.bucket.id
+  versioning {
     enabled = true
   }
 }
