@@ -14,9 +14,11 @@ resource "aws_ecs_cluster" "cluster" {
   }
 
   configuration {
-    log_configuration {
-      log_driver           = "awslogs"
-      cloudwatch_log_group = aws_cloudwatch_log_group.log_group.name
+    execute_command_configuration {
+      log_configuration {
+        log_driver           = "awslogs"
+        cloudwatch_log_group = aws_cloudwatch_log_group.log_group.name
+      }
     }
   }
 
