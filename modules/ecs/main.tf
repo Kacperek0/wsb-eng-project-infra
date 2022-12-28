@@ -26,8 +26,8 @@ resource "aws_ecs_cluster" "cluster" {
       logging    = "OVERRIDE"
 
       log_configuration {
-        cloudwatch_encryption_enabled = true
-        cloudwatch_log_group          = aws_cloudwatch_log_group.log_group.name
+        cloud_watch_encryption_enabled = true
+        cloud_watch_log_group          = aws_cloudwatch_log_group.log_group.name
       }
     }
   }
