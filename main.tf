@@ -49,9 +49,8 @@ module "database" {
 module "ecs" {
   source = "./modules/ecs"
 
-  cluster_name    = "wsb-ecs-cluster"
-  log_group_name  = "wsb-ecs-log-group"
-  task_definition = "wsb-ecs-task-definition"
+  cluster_name   = "wsb-ecs-cluster"
+  log_group_name = "wsb-ecs-log-group"
 
   tags = var.tags
 }

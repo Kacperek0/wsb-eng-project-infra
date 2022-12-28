@@ -7,3 +7,8 @@ variable "cluster_name" {
   description = "Name of the ECS cluster"
   type        = string
 }
+
+variable "tags" {
+  description = "The tags for the Lambda function"
+  type        = map(string)
+}
